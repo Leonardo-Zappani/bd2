@@ -1,0 +1,2 @@
+class Fornecedore < ApplicationRecord
+end
