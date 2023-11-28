@@ -13,9 +13,9 @@ RUN curl -sL https://deb.nodesource.com/setup_19.x | bash -\
 RUN yarn add esbuild
 RUN yarn add sass
 
-WORKDIR /docker-rails7-esbuild-tailwind-pgsql
-COPY Gemfile /docker-rails7-esbuild-tailwind-pgsql/Gemfile
-COPY Gemfile.lock /docker-rails7-esbuild-tailwind-pgsql/Gemfile.lock
+WORKDIR /trabalho_bd2
+COPY Gemfile /trabalho_bd2/Gemfile
+COPY Gemfile.lock /trabalho_bd2/Gemfile.lock
 
 EXPOSE 3000
 
