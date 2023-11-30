@@ -17,14 +17,14 @@ services:
       - 3000:3000
     depends_on:
       - db
-  # js_css:
-  #   build: .
-  #   container_name: js_css
-  #   restart: unless-stopped
-  #   tty: true
-  #   command: sh -c "yarn build:css --watch && yarn build --watch"
-  #   volumes:
-  #     - .:/crm7
-  #   depends_on:
-  #     - db
-  #     - rails
+#   js_css:
+#     build: .
+#     container_name: js_css
+#     restart: unless-stopped
+#     tty: true
+#     command: sh -c "yarn build:css --watch && yarn build --watch"
+#     volumes:
+#       - .:/crm7
+#     depends_on:
+#       - db
+#       - rails
