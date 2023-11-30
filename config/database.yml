@@ -26,7 +26,7 @@ default: &default
 
 development:
   <<: *default
-  database: docker_rails7_esbuild_tailwind_pgsql_development
+  database: bd2
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
