@@ -2030,3 +2030,870 @@ Migrating to CreateItens (20231128211405)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_advisory_unlock(4317758299481888835)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/produtos" for 127.0.0.1 at 2023-11-30 19:49:33 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ProdutosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/index.html.erb within layouts/application
+  [1m[36mProduto Load (9.0ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/views/produtos/index.html.erb:6
+  Rendered produtos/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 1714)
+  Rendered layout layouts/application.html.erb (Duration: 251.7ms | Allocations: 74991)
+Completed 200 OK in 266ms (Views: 245.3ms | ActiveRecord: 9.0ms | Allocations: 79148)
+
+
+Started GET "/cable?type=CONTRACTOR" for 127.0.0.1 at 2023-11-30 19:49:34 -0300
+Started GET "/cable?type=CONTRACTOR" [WebSocket] for 127.0.0.1 at 2023-11-30 19:49:34 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Started GET "/produtos/new" for 127.0.0.1 at 2023-11-30 19:49:36 -0300
+Processing by ProdutosController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/new.html.erb within layouts/application
+  Rendered produtos/_form.html.erb (Duration: 21.3ms | Allocations: 3260)
+  Rendered produtos/new.html.erb within layouts/application (Duration: 22.3ms | Allocations: 3603)
+  Rendered layout layouts/application.html.erb (Duration: 31.1ms | Allocations: 5323)
+Completed 200 OK in 61ms (Views: 31.5ms | ActiveRecord: 17.8ms | Allocations: 11614)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Started GET "/cable?type=CONTRACTOR" for 127.0.0.1 at 2023-11-30 19:49:37 -0300
+Started GET "/cable?type=CONTRACTOR" [WebSocket] for 127.0.0.1 at 2023-11-30 19:49:37 -0300
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Started POST "/produtos" for 127.0.0.1 at 2023-11-30 19:49:39 -0300
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Processing by ProdutosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Create Produto"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/produtos_controller.rb:27:in `block in create'
+  [1m[36mProduto Create (5.8ms)[0m  [1m[32mINSERT INTO "produtos" ("descricao", "valor", "quantidade", "fornecedores_id", "integer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["descricao", nil], ["valor", nil], ["quantidade", nil], ["fornecedores_id", nil], ["integer_id", nil], ["created_at", "2023-11-30 22:49:39.353402"], ["updated_at", "2023-11-30 22:49:39.353402"]]
+  ↳ app/controllers/produtos_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/produtos_controller.rb:27:in `block in create'
+Redirected to http://0.0.0.0:3000/produtos/1
+Completed 302 Found in 13ms (ActiveRecord: 7.4ms | Allocations: 4106)
+
+
+Started GET "/produtos/1" for 127.0.0.1 at 2023-11-30 19:49:39 -0300
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Processing by ProdutosController#show as TURBO_STREAM
+  Parameters: {"id"=>"1"}
+  [1m[36mProduto Load (0.6ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:63:in `set_produto'
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/show.html.erb within layouts/application
+  Rendered produtos/_produto.html.erb (Duration: 0.5ms | Allocations: 176)
+  Rendered produtos/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1533)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3241)
+Completed 200 OK in 19ms (Views: 6.2ms | ActiveRecord: 1.1ms | Allocations: 6080)
+
+
+Started DELETE "/produtos/1" for 127.0.0.1 at 2023-11-30 19:49:39 -0300
+Processing by ProdutosController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mProduto Load (0.6ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:63:in `set_produto'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/produtos_controller.rb:52:in `destroy'
+  [1m[36mProduto Destroy (2.8ms)[0m  [1m[31mDELETE FROM "produtos" WHERE "produtos"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/produtos_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/produtos_controller.rb:52:in `destroy'
+Redirected to http://0.0.0.0:3000/produtos
+Completed 302 Found in 9ms (ActiveRecord: 4.0ms | Allocations: 2653)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2023-11-30 19:49:39 -0300
+Processing by ProdutosController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/index.html.erb within layouts/application
+  [1m[36mProduto Load (0.5ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/views/produtos/index.html.erb:6
+  Rendered produtos/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 830)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2447)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.5ms | Allocations: 2727)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Started GET "/produtos/new" for 127.0.0.1 at 2023-11-30 19:49:42 -0300
+Processing by ProdutosController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/new.html.erb within layouts/application
+  Rendered produtos/_form.html.erb (Duration: 1.1ms | Allocations: 603)
+  Rendered produtos/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 693)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2309)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 2576)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Started POST "/produtos" for 127.0.0.1 at 2023-11-30 19:49:44 -0300
+Processing by ProdutosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "commit"=>"Create Produto"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/produtos_controller.rb:27:in `block in create'
+  [1m[36mProduto Create (0.4ms)[0m  [1m[32mINSERT INTO "produtos" ("descricao", "valor", "quantidade", "fornecedores_id", "integer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["descricao", nil], ["valor", nil], ["quantidade", nil], ["fornecedores_id", nil], ["integer_id", nil], ["created_at", "2023-11-30 22:49:44.594979"], ["updated_at", "2023-11-30 22:49:44.594979"]]
+  ↳ app/controllers/produtos_controller.rb:27:in `block in create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/produtos_controller.rb:27:in `block in create'
+Redirected to http://0.0.0.0:3000/produtos/2
+Completed 302 Found in 4ms (ActiveRecord: 1.0ms | Allocations: 2262)
+
+
+Started GET "/produtos/2" for 127.0.0.1 at 2023-11-30 19:49:44 -0300
+Processing by ProdutosController#show as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mProduto Load (0.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:63:in `set_produto'
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/show.html.erb within layouts/application
+  Rendered produtos/_produto.html.erb (Duration: 0.0ms | Allocations: 15)
+  Rendered produtos/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 574)
+  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 2182)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 2928)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Started GET "/produtos" for 127.0.0.1 at 2023-11-30 19:49:47 -0300
+Processing by ProdutosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/index.html.erb within layouts/application
+  [1m[36mProduto Load (0.7ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/views/produtos/index.html.erb:6
+  Rendered produtos/_produto.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered produtos/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 907)
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 2522)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.7ms | Allocations: 2772)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Started GET "/produtos/2" for 127.0.0.1 at 2023-11-30 19:49:50 -0300
+Processing by ProdutosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:63:in `set_produto'
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/show.html.erb within layouts/application
+  Rendered produtos/_produto.html.erb (Duration: 0.1ms | Allocations: 15)
+  Rendered produtos/show.html.erb within layouts/application (Duration: 1.6ms | Allocations: 553)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 2160)
+Completed 200 OK in 13ms (Views: 9.1ms | ActiveRecord: 0.4ms | Allocations: 2901)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Started DELETE "/produtos/2" for 127.0.0.1 at 2023-11-30 19:49:52 -0300
+Processing by ProdutosController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2"}
+  [1m[36mProduto Load (0.4ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos" WHERE "produtos"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/produtos_controller.rb:63:in `set_produto'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/produtos_controller.rb:52:in `destroy'
+  [1m[36mProduto Destroy (0.3ms)[0m  [1m[31mDELETE FROM "produtos" WHERE "produtos"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/produtos_controller.rb:52:in `destroy'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/produtos_controller.rb:52:in `destroy'
+Redirected to http://0.0.0.0:3000/produtos
+Completed 302 Found in 10ms (ActiveRecord: 2.2ms | Allocations: 2357)
+
+
+Started GET "/produtos" for 127.0.0.1 at 2023-11-30 19:49:52 -0300
+Processing by ProdutosController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering produtos/index.html.erb within layouts/application
+  [1m[36mProduto Load (0.3ms)[0m  [1m[34mSELECT "produtos".* FROM "produtos"[0m
+  ↳ app/views/produtos/index.html.erb:6
+  Rendered produtos/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 820)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2509)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.3ms | Allocations: 2767)
+
+
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::NotificationChannel"
+Subscription class not found: "ApplicationCable::CompanyChannel"
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (65.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "bd2"[0m
+  [1m[35m (32.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "docker_rails7_esbuild_tailwind_pgsql_test"[0m
+  [1m[35m (95.8ms)[0m  [1m[35mCREATE DATABASE "bd2" ENCODING = 'unicode'[0m
+  [1m[35m (74.3ms)[0m  [1m[35mCREATE DATABASE "docker_rails7_esbuild_tailwind_pgsql_test" ENCODING = 'unicode'[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4317758299481888835)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFornecedores (20231128211119)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "fornecedores" ("id" bigserial primary key, "descricao" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231128211119"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFuncionarios (20231128211308)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE TABLE "funcionarios" ("id" bigserial primary key, "nome" character varying, "cpf" character varying, "senha" character varying, "funcao" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231128211308"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateVendas (20231128211329)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "vendas" ("id" bigserial primary key, "horario_venda" timestamp, "total" decimal(7,2), "funcionarios_id" bigint, "integer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_vendas_on_funcionarios_id" ON "vendas" ("funcionarios_id")[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_vendas_on_integer_id" ON "vendas" ("integer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231128211329"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProdutos (20231128211349)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "produtos" ("id" bigserial primary key, "descricao" character varying, "valor" decimal(7,2), "quantidade" integer, "fornecedores_id" bigint, "integer_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_fornecedores_id" ON "produtos" ("fornecedores_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE INDEX "index_produtos_on_integer_id" ON "produtos" ("integer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231128211349"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateItens (20231128211405)
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "itens" ("id" bigserial primary key, "quantidade" integer, "valor_parcial" decimal(7,2), "produtos_id" bigint, "vendas_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE INDEX "index_itens_on_produtos_id" ON "itens" ("produtos_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_itens_on_vendas_id" ON "itens" ("vendas_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231128211405"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-11-30 23:00:17.801966"], ["updated_at", "2023-11-30 23:00:17.801966"]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4317758299481888835)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
