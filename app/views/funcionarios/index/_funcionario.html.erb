@@ -1,0 +1,15 @@
+<%= render(Table::ItemComponent.new(options: { id: dom_id(funcionario), href: edit_funcionario_url(funcionario) })) do |item| %>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {funcionario.id.to_s}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {funcionario.nome}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {funcionario.funcao}%>
+  <% item.col(options: { class: 'text-gray-900' }) do %>
+    <div class="table-component__actions">
+      <%= button_to edit_funcionario_path(funcionario), method: :get, class: 'hidden group-hover:flex' do %>
+        <%= heroicon 'pencil-square', options: { class: 'w-5 h-5 text-gray-500 hover:text-gray-700 mr-1' } %>
+      <% end %>
+      <%= button_to funcionario, method: :delete, class: 'hidden group-hover:flex ' do %>
+        <%= heroicon 'trash', options: { class: 'w-5 h-5 text-informative-red-500 hover:text-informative-red-700 mr-1' } %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

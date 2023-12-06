@@ -1,0 +1,21 @@
+<div class="h-[9%] w-full overflow-hidden flex border-b-2 border-gray-200 align-middle justify-between px-8 py-5">
+  <div class="flex h-8 justify-start items-center gap-2.5 ">
+    <%= heroicon 'user-group', options: { class: 'w-6 h-6 relative text-green-700' } %>
+    <label class="text-black text-2xl font-bold leading-loose">
+      <%= 'Funcionários' %>
+    </label>
+  </div>
+  <div class="flex h-8 justify-end items-start gap-4 align-middle ">
+    <div class="btn--green-outline-border py-2.5 w-10 h-10 items-center align-middle">
+      <%= heroicon 'funnel', options: { class: 'w-5 h-5 relative text-green-600' } %>
+    </div>
+    <%=link_to new_funcionario_path do %>
+      <div class="flex btn--green py-2.5 text-white align-middle h-10">
+        <%= heroicon 'plus', variant: 'mini', options: { class: 'w-5 h-5 relative' } %>
+        <label class="text-center text-white text-sm font-medium leading-tight cursor-pointer">
+          <%= 'Novo funcionário' %>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>

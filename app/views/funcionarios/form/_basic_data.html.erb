@@ -1,0 +1,33 @@
+<div class="w-full h-[10%] py-6 flex-col justify-start items-start gap-6 flex">
+  <div class="justify-start items-center gap-1.5 inline-flex">
+    <%= heroicon 'list-bullet', options: { class: 'w-6 h-6 relative stroke-gray-500' } %>
+    <div class="text-black text-xl font-bold leading-7">
+      <%= 'Dados básicos' %>
+    </div>
+  </div>
+
+  <div class="gap-6 grid grid-cols-4 w-full" >
+    <div class="form-group col-span-1">
+      <%= f.label 'Nome', class: ' text-gray-700 gap-6' %>
+      <%= f.text_field :nome, class: 'form-control-input', autofocus: true %>
+    </div>
+
+    <div class="form-group col-span-1">
+      <%= f.label 'Função', class: ' text-gray-700' %>
+      <%= f.text_field :funcao, class: 'form-control-input' %>
+    </div>
+
+    <div class="form-group col-span-1">
+      <%= f.label 'CPF', class: ' text-gray-700' %>
+      <%= f.text_field :cpf, class: 'form-control-input', data: { controller: 'cpf-cnpj'} %>
+    </div>
+
+    <% unless @funcionario.persisted? %>
+
+      <div class="form-group col-span-1">
+        <%= f.label 'Senha', class: ' text-gray-700' %>
+        <%= f.password_field :senha, class: 'form-control-input' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+#header{class: 'flex w-full h-[4%] bg-gray-100 self-stretch px-4 justify-start items-center gap-4 border-gray-200 border-b'}
+  %div
+    = heroicon 'home', options: { class: 'w-5 h-5 ml-2 text-gray-500' }
+  -if content_for(:title) != "Home"
+    = heroicon 'chevron-right', options: {class: 'w-[3%] text-gray-200'}
+    %label{class: "text-gray-500 text-sm font-medium leading-tight"}=content_for(:title) ? yield(:title) : 'SGP'

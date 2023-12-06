@@ -1,0 +1,17 @@
+<%= render(Table::ItemComponent.new(options: { id: dom_id(produto), href: edit_produto_url(produto) })) do |item| %>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.id.to_s}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.descricao}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) { format_amount_as_money(produto.valor)}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.quantidade.to_s}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.fornecedore.name}%>
+  <% item.col(options: { class: 'text-gray-900' }) do %>
+    <div class="table-component__actions">
+      <%= button_to edit_produto_path(produto), method: :get, class: 'hidden group-hover:flex' do %>
+        <%= heroicon 'pencil-square', options: { class: 'w-5 h-5 text-gray-500 hover:text-gray-700 mr-1' } %>
+      <% end %>
+      <%= button_to produto, method: :delete, class: 'hidden group-hover:flex ' do %>
+        <%= heroicon 'trash', options: { class: 'w-5 h-5 text-informative-red-500 hover:text-informative-red-700 mr-1' } %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

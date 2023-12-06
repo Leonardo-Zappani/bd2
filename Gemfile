@@ -28,9 +28,9 @@ gem "stimulus-rails"
 gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
-gem "jbuilder"
 gem 'activerecord-import'
 gem 'faker'
+gem "jbuilder"
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
@@ -75,3 +75,14 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'browser', '~> 5.3'
+gem 'devise', '~> 4.9'
+gem 'haml-rails', '~> 2.1'
+gem "heroicon", "~> 1.0"
+gem 'html2haml', '~> 2.3'
+gem 'pg_search', '~> 2.3'
+gem 'rubocop', '~> 1.58'
+gem 'simple_enum', github: 'felipevenancio/simple_enum'
+gem 'view_component', '~> 2.71'
+

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'indicators#index'
   resources :itens
   resources :produtos
   resources :vendas

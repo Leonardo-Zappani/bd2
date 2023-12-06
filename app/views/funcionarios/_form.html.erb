@@ -1,17 +1,7 @@
-<%= form_with(model: funcionario) do |form| %>
-  <% if funcionario.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
+<%= form_with model: @funcionario, url: @funcionario.persisted? ? funcionario_path(@funcionario) : funcionarios_path, method: @funcionario.persisted? ? :patch : :post, html: { autocomplete: "off" } do |f| %>
+  <%= render partial: 'funcionarios/form/header', locals: { f: } %>
 
-      <ul>
-        <% funcionario.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+  <div class=' mx-20 gap-x-6'>
+    <%= render partial: 'funcionarios/form/basic_data', locals: { f: } %>
   </div>
 <% end %>
