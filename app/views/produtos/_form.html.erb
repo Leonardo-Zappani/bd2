@@ -1,17 +1,7 @@
-<%= form_with(model: produto) do |form| %>
-  <% if produto.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+<%= form_with model: @produto, url: @produto.persisted? ? produto_path(@produto) : produtos_path, method: @produto.persisted? ? :patch : :post, html: { autocomplete: "off" } do |f| %>
+  <%= render partial: 'produtos/form/header', locals: { f: } %>
 
-      <ul>
-        <% produto.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+  <div class=' mx-20 gap-x-6'>
+    <%= render partial: 'produtos/form/basic_data', locals: { f: } %>
   </div>
 <% end %>

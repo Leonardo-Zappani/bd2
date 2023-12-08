@@ -3,7 +3,8 @@ class ProdutosController < ApplicationController
 
   # GET /produtos or /produtos.json
   def index
-    @produtos = Produto.all
+    page = params[:page] || 1
+    @produtos = Produto.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /produtos/1 or /produtos/1.json
@@ -21,11 +22,34 @@ class ProdutosController < ApplicationController
 
   # POST /produtos or /produtos.json
   def create
-    @produto = Produto.new(produto_params)
+    puts "#######################################################################"
+    puts "#######################################################################"
+    puts "#######################################################################"
+    puts "#######################################################################"
+    puts "#######################################################################"
+    puts "#######################################################################"
+    valor = produto_params[:valor].to_d
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+    sanitized_params = produto_params.merge(valor: valor)
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    @produto = Produto.create!(sanitized_params)
+    puts @produto
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 
     respond_to do |format|
       if @produto.save
-        format.html { redirect_to produto_url(@produto), notice: "Produto was successfully created." }
+        format.html { redirect_to produtos_url, notice: "Produto was successfully created." }
         format.json { render :show, status: :created, location: @produto }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +62,7 @@ class ProdutosController < ApplicationController
   def update
     respond_to do |format|
       if @produto.update(produto_params)
-        format.html { redirect_to produto_url(@produto), notice: "Produto was successfully updated." }
+        format.html { redirect_to produtos_url, notice: "Produto was successfully updated." }
         format.json { render :show, status: :ok, location: @produto }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +89,6 @@ class ProdutosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def produto_params
-      params.fetch(:produto, {})
+      params.require(:produto).permit(:descricao, :valor, :quantidade, :fornecedore_id )
     end
 end

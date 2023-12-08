@@ -3,7 +3,8 @@ class FuncionariosController < ApplicationController
 
   # GET /funcionarios or /funcionarios.json
   def index
-    @funcionarios = Funcionario.all
+    page = params[:page] || 1
+    @funcionarios = Funcionario.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /funcionarios/1 or /funcionarios/1.json
@@ -19,13 +20,21 @@ class FuncionariosController < ApplicationController
   def edit
   end
 
+  def backup
+    folder = Rails.root.join('public')
+    command = "pg_dump -U postgres -h localhost -p 5432 -d bd2 -f "
+    system(command + folder.to_s + "/backup.sql")
+
+    redirect_to '/backup.sql'
+  end
+
   # POST /funcionarios or /funcionarios.json
   def create
     @funcionario = Funcionario.new(funcionario_params)
 
     respond_to do |format|
       if @funcionario.save
-        format.html { redirect_to funcionario_url(@funcionario), notice: "Funcionario was successfully created." }
+        format.html { redirect_to funcionarios_url, notice: "Funcionario was successfully created." }
         format.json { render :show, status: :created, location: @funcionario }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +47,7 @@ class FuncionariosController < ApplicationController
   def update
     respond_to do |format|
       if @funcionario.update(funcionario_params)
-        format.html { redirect_to funcionario_url(@funcionario), notice: "Funcionario was successfully updated." }
+        format.html { redirect_to funcionarios_url, notice: "Funcionario was successfully updated." }
         format.json { render :show, status: :ok, location: @funcionario }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +74,6 @@ class FuncionariosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def funcionario_params
-      params.fetch(:funcionario, {})
+      params.require(:funcionario).permit(:nome, :cpf, :senha, :funcao)
     end
 end

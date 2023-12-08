@@ -1,14 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% content_for(:title, 'Fornecedores') %>
 
-<h1>Fornecedores</h1>
-
-<div id="fornecedores">
-  <% @fornecedores.each do |fornecedore| %>
-    <%= render fornecedore %>
-    <p>
-      <%= link_to "Show this fornecedore", fornecedore %>
-    </p>
-  <% end %>
+<%= render partial: 'fornecedores/index/header' %>
+<div class="p-6">
+  <%= render partial: 'fornecedores/index/fornecedores_list' %>
 </div>
-
-<%= link_to "New fornecedore", new_fornecedore_path %>

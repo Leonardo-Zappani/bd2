@@ -1,0 +1,15 @@
+<%= render(Panels::CardComponent.new) do %>
+  <%= render(Table::TableComponent.new) do |table| %>
+    <% table.header do |header| %>
+      <% header.col(options: { class: '' }) { 'ID' } %>
+      <% header.col(options: { class: '' }) { 'Nome' } %>
+      <% header.col(options: { class: '' }) { 'Valor' } %>
+      <% header.col(options: { class: '' }) { 'Quantidade' } %>
+      <% header.col(options: { class: '' }) { 'Fornecedor' } %>
+    <% end %>
+    <% table.body(id: :produtos) do %>
+      <%= render collection: @produtos, partial: 'produtos/index/produto', as: :produto %>
+    <% end %>
+  <% end %>
+<% end %>
+

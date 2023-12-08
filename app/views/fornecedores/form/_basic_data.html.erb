@@ -1,0 +1,17 @@
+<div class="w-full h-[10%] py-6 flex-col justify-start items-start gap-6 flex">
+  <div class="justify-start items-center gap-1.5 inline-flex">
+    <%= heroicon 'list-bullet', options: { class: 'w-6 h-6 relative stroke-gray-500' } %>
+    <div class="text-black text-xl font-bold leading-7">
+      <%= 'Dados básicos' %>
+    </div>
+  </div>
+
+
+  <div class="gap-6 w-full" >
+    <div class="form-group">
+      <%= f.label 'Nome', class: ' text-gray-700 gap-6' %>
+      <%= f.text_field :descricao, class: 'form-control-input', autofocus: true %>
+    </div>
+
+  </div>
+</div>

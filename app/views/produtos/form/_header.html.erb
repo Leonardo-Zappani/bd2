@@ -1,0 +1,16 @@
+<div class="flex h-[9%] w-full border-b-2 border-gray-200 align-middle items-center justify-between px-8 py-3">
+  <div class="flex h-8 justify-start items-center gap-2.5 ">
+    <%= heroicon 'shopping-bag', options: { class: 'w-6 h-6 relative text-green-700' } %>
+    <label class="text-black text-2xl font-bold leading-loose">
+      <%= @produto.persisted? ? @produto.descricao : "Nome do produto" %>
+    </label>
+  </div>
+  <div class="h-8 justify-start items-start justify-items-center gap-4 mb-5 align-middle inline-flex">
+    <%= link_to produtos_path do %>
+      <div class="w-[92px] h-10 py-2.5 btn--green-outline">
+        <div class="text-sm leading-tight"><%= 'Cancelar' %></div>
+      </div>
+    <% end %>
+    <%= f.submit class: 'btn--green w-[74px] h-10 py-2.5 text-sm leading-tight', value: 'Salvar', data: { dropzone_target: "submit" } %>
+  </div>
+</div>

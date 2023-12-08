@@ -1,0 +1,13 @@
+<%= render(Table::ItemComponent.new(options: { id: dom_id(iten), href: edit_iten_url(iten) })) do |i| %>
+  <% i.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {iten.name}%>
+  <% i.col(options: { class: 'text-gray-900' }) do %>
+    <div class="table-component__actions">
+      <%= button_to edit_iten_path(iten), method: :get, class: 'hidden group-hover:flex' do %>
+        <%= heroicon 'pencil-square', options: { class: 'w-5 h-5 stroke-gray-500 hover:stroke-gray-700 mr-1' } %>
+      <% end %>
+      <%= button_to iten, method: :delete, class: 'hidden group-hover:flex ' do %>
+        <%= heroicon 'trash', options: { class: 'w-5 h-5 stroke-informative-red-500 hover:stroke-informative-red-700 mr-1' } %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

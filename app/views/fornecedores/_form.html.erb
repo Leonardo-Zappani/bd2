@@ -1,17 +1,6 @@
-<%= form_with(model: fornecedore) do |form| %>
-  <% if fornecedore.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(fornecedore.errors.count, "error") %> prohibited this fornecedore from being saved:</h2>
-
-      <ul>
-        <% fornecedore.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
+<%= form_with model: @fornecedore, html: { autocomplete: "off" } do |f| %>
+  <%= render partial: 'fornecedores/form/header', locals: {f:} %>
+  <div class=' mx-20 gap-x-6'>
+    <%= render partial: 'fornecedores/form/basic_data', locals: {f:} %>
   </div>
 <% end %>

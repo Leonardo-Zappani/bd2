@@ -67,7 +67,12 @@ CREATE TABLE public.funcionarios (
     senha character varying,
     funcao character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp(6) without time zone,
+    remember_created_at timestamp(6) without time zone
 );
 
 
@@ -134,7 +139,6 @@ CREATE TABLE public.produtos (
     valor numeric(7,2),
     quantidade integer,
     fornecedores_id bigint,
-    integer_id bigint,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL
 );
@@ -294,6 +298,20 @@ ALTER TABLE ONLY public.vendas
 
 
 --
+-- Name: index_funcionarios_on_email; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_funcionarios_on_email ON public.funcionarios USING btree (email);
+
+
+--
+-- Name: index_funcionarios_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE UNIQUE INDEX index_funcionarios_on_reset_password_token ON public.funcionarios USING btree (reset_password_token);
+
+
+--
 -- Name: index_itens_on_produtos_id; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -312,13 +330,6 @@ CREATE INDEX index_itens_on_vendas_id ON public.itens USING btree (vendas_id);
 --
 
 CREATE INDEX index_produtos_on_fornecedores_id ON public.produtos USING btree (fornecedores_id);
-
-
---
--- Name: index_produtos_on_integer_id; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE INDEX index_produtos_on_integer_id ON public.produtos USING btree (integer_id);
 
 
 --
@@ -346,6 +357,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20231128211308'),
 ('20231128211329'),
 ('20231128211349'),
-('20231128211405');
+('20231128211405'),
+('20231208005122');
 
 

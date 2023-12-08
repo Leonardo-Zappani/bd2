@@ -1,8 +1,102 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
-    './app/views/**/*.html.erb',
+    './public/*.html',
     './app/helpers/**/*.rb',
-    './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
+    './app/assets/stylesheets/**/*.{scss,sass,css}',
+    './app/views/**/*.{erb,haml,html,slim}',
+    './app/components/**/*.{rb,erb,haml,html,slim}'
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+      ringOffsetWidth: {
+        '2': '2px',
+        '4': '4px',
+        '8': '8px',
+      },
+
+      colors: {
+        'gold-900': '#332A1E',
+        'gold-800': '#443828',
+        'gold-700': '#66553D',
+        'gold-600': '#887151',
+        'gold-500': '#AA8D65',
+        'gold-400': '#BBA484',
+        'gold-300': '#CCBBA3',
+        'gold-200': '#DDD1C1',
+        'gold-100': '#EEE8E0',
+        'gold-50': '#F6F4F0',
+        'secondary-900': '#101010',
+        'secondary-800': '#212020',
+        'secondary-700': '#31302F',
+        'secondary-600': '#42403F',
+        'secondary-500': '#52504F',
+        'secondary-400': '#6F6E6D',
+        'secondary-300': '#8D8B8B',
+        'secondary-200': '#AAA9A8',
+        'secondary-100': '#C8C6C6',
+        'secondary-50': '#D6D5D5',
+        'informative-red-900': '#7f1d1d',
+        'informative-red-800': '#991b1b',
+        'informative-red-700': '#b91c1c',
+        'informative-red-600': '#dc2626',
+        'informative-red-500': '#ef4444',
+        'informative-red-400': '#f87171',
+        'informative-red-300': '#fca5a5',
+        'informative-red-200': '#fecaca',
+        'informative-red-100': '#fee2e2',
+        'informative-red-50': '#fef2f2',
+        'informative-yellow-900': '#78350F',
+        'informative-yellow-800': '#92400E',
+        'informative-yellow-700': '#b45309',
+        'informative-yellow-600': '#d97706',
+        'informative-yellow-500': '#f59e0b',
+        'informative-yellow-400': '#fbbf24',
+        'informative-yellow-300': '#fcd34d',
+        'informative-yellow-200': '#fde68a',
+        'informative-yellow-100': '#fef3c7',
+        'informative-yellow-50': '#fffbeb',
+        'informative-green-900': '#064e3b',
+        'informative-green-800': '#065f46',
+        'informative-green-700': '#047857',
+        'informative-green-600': '#059669',
+        'informative-green-500': '#10b981',
+        'informative-green-400': '#34d399',
+        'informative-green-300': '#6ee7b7',
+        'informative-green-200': '#a7f3d0',
+        'informative-green-100': '#d1fae5',
+        'informative-green-50': '#ecfdf5',
+        'informative-blue-900': '#1e3a8a',
+        'informative-blue-800': '#1e40af',
+        'informative-blue-700': '#1d4ed8',
+        'informative-blue-600': '#2563eb',
+        'informative-blue-500': '#3b82f6',
+        'informative-blue-400': '#60a5fa',
+        'informative-blue-300': '#93c5fd',
+        'informative-blue-200': '#bfdbfe',
+        'informative-blue-100': '#dbeafe',
+        'informative-blue-50': '#eff6ff'
+      },
+      boxShadow: {
+        'base': '0px 1px 2px 0px rgba(0, 0, 0, 0.06), 0px 1px 3px 0px rgba(0, 0, 0, 0.10)',
+        'medium': '0px 2px 4px -1px rgba(0, 0, 0, 0.06), 0px 4px 6px -1px rgba(0, 0, 0, 0.10)',
+        'large': '0px 4px 6px -2px rgba(0, 0, 0, 0.05), 0px 10px 15px -3px rgba(0, 0, 0, 0.10)'
+      },
+    },
+  },
+  variants: {
+    ...defaultTheme.variants,
+    borderWidth: ['responsive', 'last', 'hover', 'focus']
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/container-queries'),
   ]
 }

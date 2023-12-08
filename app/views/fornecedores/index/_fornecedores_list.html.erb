@@ -1,0 +1,12 @@
+<%= render(Panels::CardComponent.new) do %>
+  <%= render(Table::TableComponent.new) do |table| %>
+    <% table.header do |header| %>
+      <% header.col(options: { class: '' }) { 'ID' } %>
+      <% header.col(options: { class: '' }) { 'Nome' } %>
+    <% end %>
+    <% table.body(id: :fornecedores) do %>
+      <%= render collection: @fornecedores, partial: 'fornecedores/index/fornecedore', as: :fornecedore %>
+    <% end %>
+  <% end %>
+<% end %>
+

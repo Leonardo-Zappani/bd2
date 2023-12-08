@@ -1,0 +1,13 @@
+<%= render(Panels::CardComponent.new) do %>
+  <%= render(Table::TableComponent.new) do |table| %>
+    <% table.header do |header| %>
+      <% header.col(options: { class: '' }) { 'ID' } %>
+      <% header.col(options: { class: '' }) { 'Nome' } %>
+      <% header.col(options: { class: '' }) { 'Função' } %>
+    <% end %>
+    <% table.body(id: :funcionarios) do %>
+      <%= render collection: @funcionarios, partial: 'funcionarios/index/funcionario', as: :funcionario %>
+    <% end %>
+  <% end %>
+<% end %>
+

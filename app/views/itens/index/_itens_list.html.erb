@@ -1,0 +1,11 @@
+<%= render(Panels::CardComponent.new) do %>
+  <%= render(Table::TableComponent.new) do |table| %>
+    <% table.header do |header| %>
+      <% header.col {'Nome'} %>
+      <% header.col {'Quantidade'} %>
+    <% end %>
+    <% table.body(id: :itens) do %>
+      <%= render collection: @itens, partial: 'itens/index/iten', as: :iten %>
+    <% end %>
+  <% end %>
+<% end %>

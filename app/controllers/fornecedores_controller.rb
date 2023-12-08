@@ -3,12 +3,12 @@ class FornecedoresController < ApplicationController
 
   # GET /fornecedores or /fornecedores.json
   def index
-    @fornecedores = Fornecedore.all
+    page = params[:page] || 1
+    @fornecedores = Fornecedore.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /fornecedores/1 or /fornecedores/1.json
-  def show
-  end
+  def show; end
 
   # GET /fornecedores/new
   def new
@@ -25,7 +25,7 @@ class FornecedoresController < ApplicationController
 
     respond_to do |format|
       if @fornecedore.save
-        format.html { redirect_to fornecedore_url(@fornecedore), notice: "Fornecedore was successfully created." }
+        format.html { redirect_to fornecedores_url, notice: "Fornecedore was successfully created." }
         format.json { render :show, status: :created, location: @fornecedore }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +65,6 @@ class FornecedoresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fornecedore_params
-      params.fetch(:fornecedore, {})
+      params.require(:fornecedore).permit(:descricao)
     end
 end

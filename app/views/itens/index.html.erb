@@ -1,14 +1,6 @@
-<p style="color: green"><%= notice %></p>
+<% content_for(:title, 'Itens') %>
 
-<h1>Itens</h1>
-
-<div id="itens">
-  <% @itens.each do |iten| %>
-    <%= render iten %>
-    <p>
-      <%= link_to "Show this iten", iten %>
-    </p>
-  <% end %>
+<%= render partial: 'itens/index/header' %>
+<div class="px-6">
+  <%= render partial: 'itens/index/itens_list' %>
 </div>
-
-<%= link_to "New iten", new_iten_path %>

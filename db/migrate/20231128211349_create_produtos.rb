@@ -4,7 +4,7 @@ class CreateProdutos < ActiveRecord::Migration[7.0]
       t.string :descricao
       t.decimal :valor, precision: 7, scale: 2
       t.integer :quantidade
-      t.references :fornecedores, :integer
+      t.references :fornecedores
 
       t.timestamps
     end
