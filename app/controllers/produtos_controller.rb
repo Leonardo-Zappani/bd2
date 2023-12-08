@@ -3,7 +3,8 @@ class ProdutosController < ApplicationController
 
   # GET /produtos or /produtos.json
   def index
-    @produtos = Produto.all
+    page = params[:page] || 1
+    @produtos = Produto.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /produtos/1 or /produtos/1.json

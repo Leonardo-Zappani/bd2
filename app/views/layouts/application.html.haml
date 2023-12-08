@@ -13,4 +13,8 @@
       %div{class: 'ml-[5%]'}
         = render 'breadcrumb'
         #body{class: "w-full h-[96%]"}
+          - if notice
+            %p.alert.alert-success= notice
+          - if alert
+            %p.alert.alert-danger= alert
           = yield

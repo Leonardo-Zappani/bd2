@@ -3,7 +3,8 @@ class FuncionariosController < ApplicationController
 
   # GET /funcionarios or /funcionarios.json
   def index
-    @funcionarios = Funcionario.all
+    page = params[:page] || 1
+    @funcionarios = Funcionario.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /funcionarios/1 or /funcionarios/1.json

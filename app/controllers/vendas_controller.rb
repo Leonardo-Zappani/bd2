@@ -3,7 +3,8 @@ class VendasController < ApplicationController
 
   # GET /vendas or /vendas.json
   def index
-    @vendas = Venda.all
+    page = params[:page] || 1
+    @vendas = Venda.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /vendas/1 or /vendas/1.json

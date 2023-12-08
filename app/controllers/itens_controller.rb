@@ -3,7 +3,8 @@ class ItensController < ApplicationController
 
   # GET /itens or /itens.json
   def index
-    @itens = Iten.all
+    page = params[:page] || 1
+    @itens = Iten.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /itens/1 or /itens/1.json

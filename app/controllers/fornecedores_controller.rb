@@ -3,7 +3,8 @@ class FornecedoresController < ApplicationController
 
   # GET /fornecedores or /fornecedores.json
   def index
-    @fornecedores = Fornecedore.all
+    page = params[:page] || 1
+    @fornecedores = Fornecedore.all.order(created_at: :desc).limit(1000)
   end
 
   # GET /fornecedores/1 or /fornecedores/1.json
