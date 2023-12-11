@@ -8,13 +8,14 @@
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
   %body.h-full
-    %main
-      = render 'sidebar'
-      %div{class: 'ml-[5%]'}
-        = render 'breadcrumb'
-        #body{class: "w-full h-[96%]"}
-          - if notice
-            %p.alert.alert-success= notice
-          - if alert
-            %p.alert.alert-danger= alert
-          = yield
+    -if funcionario_signed_in?
+      %main
+        = render 'sidebar'
+        %div{class: 'ml-[5%]'}
+          = render 'breadcrumb'
+          #body{class: "w-full h-[96%]"}
+            = yield
+    -else
+      %main.h-screen
+        = yield
+        = turbo_frame_tag :flash

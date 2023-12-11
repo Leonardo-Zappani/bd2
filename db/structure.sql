@@ -65,7 +65,7 @@ CREATE TABLE public.funcionarios (
     nome character varying,
     cpf character varying,
     senha character varying,
-    funcao character varying,
+    funcao_cd character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
