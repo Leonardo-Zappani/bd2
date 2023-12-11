@@ -4,7 +4,7 @@ class CreateFuncionarios < ActiveRecord::Migration[7.0]
       t.string :nome
       t.string :cpf
       t.string :senha
-      t.string :funcao
+      t.string :funcao_cd
 
       t.timestamps
     end

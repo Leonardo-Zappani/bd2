@@ -14,7 +14,7 @@
 
     <div class="form-group col-span-1">
       <%= f.label 'Função', class: ' text-gray-700' %>
-      <%= f.text_field :funcao, class: 'form-control-input' %>
+      <%= f.select :funcao_cd, enum_option_pairs(Funcionario, :funcao), {}, class: 'form-control-input' %>
     </div>
 
     <div class="form-group col-span-1">

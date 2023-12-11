@@ -1,0 +1,38 @@
+- content_for(:title, 'Cadastro')
+.form-header
+  .form-body
+    %div{class: "flex bg-green-600 rounded-full justify-center items-center w-40 h-40 my-6 text-white text-center font-bold text-xl"}= 'BD2'
+    %h2{class: 'mt-8 text-gray-800 font-bold text-2xl'}
+      = 'Bem-vindo!'
+    %h2{class: 'mt-2 text-sm text-gray-500 '}
+      = 'Complete o cadastro abaixo e crie a sua conta!'
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "min-[1350px]:mt-[5%] min-[1350px]:px-[15%] w-full" }) do |f|
+      .form-group.mt-6
+        = f.label 'Nome'
+        = f.text_field :nome, placeholder: 'Digite seu usuário', class: 'form-control-input', autofocus: true
+        %div{class: "absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm h-5 w-5"}
+          = heroicon 'user-circle', variant: 'outline', options: { class: "stroke-gray-500"}
+
+      .form-group.pt-6
+        = f.label 'E-mail'
+        = f.email_field :email, placeholder: 'Digite sua senha aqui', class: 'form-control-input', autocomplete: "email"
+        = heroicon 'envelope', variant: 'outline', options: { class: "stroke-gray-500 absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm h-5 w-5 "}
+
+      .form-group.pt-6
+        = f.label 'Senha'
+        = f.password_field :password, placeholder: '*********', class: 'form-control-input', autocomplete: "form-password"
+        %button{class: "absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm h-5 w-5 ", "data-controller": "hello", "data-action": "click->hello#icon", type: "button"}
+          = heroicon 'eye-slash', variant: 'outline', options: { class: "stroke-gray-500"}
+          = heroicon 'eye', variant: 'outline', options: {class: "hidden"}
+
+      .form-group.pt-6
+        = f.label 'Confirme sua senha'
+        = f.password_field :password_confirmation, placeholder: '*********', class: 'form-control-input', autocomplete: "form-password"
+        %button{class: "absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm h-5 w-5 ", "data-controller": "hello", "data-action": "click->hello#icon", type: "button"}
+          = heroicon 'eye-slash', variant: 'outline', options: { class: "stroke-gray-500"}
+          = heroicon 'eye', variant: 'outline', options: {class: "hidden"}
+
+      .form-group.pt-6
+        = f.submit "Criar conta", class: 'btn--green w-full h-10'
+  .panel.flex.items-center.justify-center
+    = heroicon 'circle-stack', variant: 'outline', options: {class: "w-12 h-12 text-white stroke-green-600"}

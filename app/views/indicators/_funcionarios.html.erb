@@ -1,7 +1,9 @@
-<div class="flex w-full h-[236px] pb-6 flex-col justify-start items-start gap-6 ">
-  <div class="self-stretch justify-start items-center gap-1.5 inline-flex">
-    <%= heroicon 'list-bullet', options: { class: 'stroke-gray-500 relative w-6 h-6' } %>
-    <div class="grow shrink basis-0 text-black text-xl font-bold leading-7">Funcionários</div>
+<div class="flex justify-end">
+  <div class="w-[20%] h-full flex pb-6 flex-col justify-end items-end gap-6">
+    <div class="flex self-stretch justify-start items-center gap-1.5">
+      <%= heroicon 'list-bullet', options: { class: 'stroke-gray-500 relative w-6 h-6' } %>
+      <div class="grow shrink basis-0 text-black text-xl font-bold leading-7">Últimos Funcionários</div>
+    </div>
     <%= link_to new_funcionario_path do %>
       <div class="justify-start items-center gap-1.5 flex text-green-600 hover:text-green-700">
         <%= heroicon 'plus', variant: 'mini', options: { class: 'relative w-5 h-5' } %>
@@ -9,11 +11,11 @@
       </div>
     <% end %>
   </div>
-  <div class="grid grid-cols-5 self-stretch justify-start items-start gap-6">
+
+  <div class="self-stretch justify-start items-start gap-6">
     <% @recent_funcionarios.each do |funcionario| %>
       <div class="grow shrink basis-0 h-[68px] p-4 bg-white rounded-md shadow justify-end items-center gap-2.5 flex">
         <div class="grow shrink basis-0 h-9 justify-start items-center gap-3 flex">
-          <img class="w-9 h-9 rounded-[18px]" src="https://via.placeholder.com/36x36" />
           <div class="flex flex-col">
             <div class="text-gray-700 text-sm font-medium leading-tight"><%= funcionario.nome %></div>
             <div class="text-gray-500 text-xs font-normal leading-none"><%= funcionario.funcao %></div>
@@ -26,3 +28,4 @@
     <% end %>
   </div>
 </div>
+

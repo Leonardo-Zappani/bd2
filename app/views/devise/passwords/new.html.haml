@@ -1,0 +1,22 @@
+- content_for(:title, 'Recuperação de senha')
+.form-header
+  .form-body
+    %div{class: "bg-gray-300 w-40 h-40 my-6"}
+
+    %div{class: "min-[1350px]:mt-[10%] min-[1350px]:px-[15%] w-full p-10"}
+      .text-center
+        %h3{class: 'text-gray-800 text-xl font-bold'}= 'Recuperação de senha'
+        %span{class: 'text-gray-500 text-sm font-normal'}= 'Insira seu e-mail e enviaremos uma confirmação para ele.'
+
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: " w-full" }) do |f|
+        .form-group.mt-5
+          = f.label :'E-mail', class: "text-gray-700 text-sm font-medium"
+          = f.email_field :email, autofocus: true, placeholder: 'Digite seu e-mail aqui', class: 'form-control-input', autocomplete: "email"
+          %div{class: "absolute right-2.5 bottom-2.5 font-medium rounded-lg text-sm h-5 w-5"}
+            = heroicon 'envelope', variant: 'outline', options: { class: "stroke-gray-500"}
+
+        .text-center
+          = f.submit 'Enviar',  class: 'btn--gold w-full h-10'
+          .my-4
+            = link_to 'voltar', new_session_path(resource_name), class: 'text-green-500 '
+  .panel
