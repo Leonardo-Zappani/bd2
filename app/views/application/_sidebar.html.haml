@@ -21,13 +21,11 @@
       = heroicon 'inbox-stack', options: { class: " w-6 h-6 relative text-white"}
 
 
-  %div{class: "mt-auto"}
-    %div{class: "w-12 h-0.5 relative"}
-      %div{class: "w-12 h-0.5 left-0 top-0 absolute bg-stone-100"}
+  %div{class: "mt-auto space-y-3 flex flex-col items-end"}
 
-        = link_to backup_path do
-          %div{class: "flex w-12 h-12 p-3 hover:bg-green-700 hover:rounded-md hover:shadow justify-start items-start gap-2.5 cursor-pointer my-3"}
-            = heroicon 'inbox-arrow-down', options: { class: " w-6 h-6 relative text-white"}
+    = link_to backup_path do
+      %div{class: "flex w-12 h-12 p-3 hover:bg-green-700 hover:rounded-md hover:shadow justify-start items-start gap-2.5 cursor-pointer my-3"}
+        = heroicon 'inbox-arrow-down', options: { class: " w-6 h-6 relative text-white"}
 
     = button_to destroy_funcionario_session_path, method: :delete, form: { class: "" } do
       %div{class: "group flex w-12 h-12 p-3 hover:bg-green-700 hover:rounded-md hover:shadow justify-start items-start gap-2.5 cursor-pointer my-3"}
