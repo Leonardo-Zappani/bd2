@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.9 (Homebrew)
--- Dumped by pg_dump version 14.9 (Homebrew)
+-- Dumped from database version 15.5 (Homebrew)
+-- Dumped by pg_dump version 15.5 (Homebrew)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -78,7 +78,7 @@ CREATE TABLE public.funcionarios (
     nome character varying,
     cpf character varying,
     senha character varying,
-    funcao_cd character varying,
+    funcao character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
@@ -277,7 +277,7 @@ ALTER TABLE ONLY public.vendas ALTER COLUMN id SET DEFAULT nextval('public.venda
 --
 
 COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
-environment	development	2023-12-11 12:25:26.464094	2023-12-11 12:25:26.464094
+environment	development	2023-12-08 00:51:38.465986	2023-12-08 00:51:38.465986
 \.
 
 
@@ -293,8 +293,10 @@ COPY public.fornecedores (id, descricao, created_at, updated_at) FROM stdin;
 -- Data for Name: funcionarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.funcionarios (id, nome, cpf, senha, funcao_cd, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at) FROM stdin;
-1	Hector	\N	\N	\N	2023-12-11 12:27:09.016667	2023-12-11 12:27:09.016667	hectorguarconi@hotmail.com	$2a$12$jw.AvVwQXGNeu4x/Ir628ez3U7ZPaHwkYv1DG5PFlouGPc8btVxqu	\N	\N	\N
+COPY public.funcionarios (id, nome, cpf, senha, funcao, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at) FROM stdin;
+1	\N	\N	\N	\N	2023-12-08 00:52:10.063355	2023-12-08 00:52:10.063355	test@test.com	$2a$12$XXPKjSn4uGG5pzjvpQIiJOHDn/Gj.Q4k6i8113B2ZrJ1yYxSyEPSy	\N	\N	\N
+3	\N	\N	\N	\N	2023-12-08 01:12:46.586154	2023-12-08 01:12:46.586154	123123123@123123.com	$2a$12$Nw1wxEss2ToJJl/z1rZ4PupxlLPwjqJctj7n0ztpgZ1D27aVVrRV2	\N	\N	\N
+2	jorge	08129847819248912748912478912748912349817489127489127489127489172897	\N	dono	2023-12-08 01:09:40.77058	2023-12-08 01:21:00.315187	test@test.jcom	$2a$12$QKUOfl1B.XIffkrexOlFi.1gLR6bA/8aKJhNUELff9Dks.xJF9ZHy	\N	\N	\N
 \.
 
 
@@ -340,14 +342,14 @@ COPY public.vendas (id, horario_venda, total, funcionarios_id, integer_id, creat
 -- Name: fornecedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.fornecedores_id_seq', 1, false);
+SELECT pg_catalog.setval('public.fornecedores_id_seq', 1, true);
 
 
 --
 -- Name: funcionarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.funcionarios_id_seq', 1, true);
+SELECT pg_catalog.setval('public.funcionarios_id_seq', 3, true);
 
 
 --
