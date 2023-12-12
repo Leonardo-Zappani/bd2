@@ -12,6 +12,9 @@ module DockerRails7EsbuildTailwindPgsql
     config.load_defaults 7.0
     config.active_record.schema_format = :sql
 
+    config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_name_prefix = "bd2"
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

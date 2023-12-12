@@ -17,6 +17,12 @@ services:
       - 3000:3000
     depends_on:
       - db
+  services:
+    redis:
+      image: redis:7.0-alpine
+      ports:
+        - 6379:6379
+
 #   js_css:
 #     build: .
 #     container_name: js_css

@@ -5,7 +5,7 @@ namespace :db do
 
     puts "Seeding Fornecedores..."
       fornecedores = []
-      1000000.times do |j|
+      1000.times do |j|
         fornecedores << Fornecedore.new(descricao: Faker::Name.name)
         puts count
         count = count + 1
@@ -17,7 +17,7 @@ namespace :db do
 
     puts "Seeding Funcionarios..."
     funcionarios = []
-    1000000.times do |j|
+    1000.times do |j|
       funcionarios <<    Funcionario.new(
         nome:Faker::Name.name,
         cpf: Faker::Number.number(digits: 11),
@@ -34,7 +34,7 @@ namespace :db do
 
     puts "Seeding Itens..."
     produtos = []
-    1000000.times do |j|
+    1000.times do |j|
       produto_id = Produto.order("RANDOM()").limit(1).pluck(:id).first
       venda_id = Venda.order("RANDOM()").limit(1).pluck(:id).first
       produtos << Iten.new(
@@ -53,7 +53,7 @@ namespace :db do
     puts "Seeding Produtos..."
     fornecedor_ids = Fornecedor.pluck(:id)
       produtos = []
-      1000000.times do |j|
+      1000.times do |j|
         produtos << Produto.new(
           descricao: Faker::FunnyName.name,
           valor: (1..100000).to_a.sample / 100.0,
@@ -70,7 +70,7 @@ namespace :db do
     puts "Seeding Vendas..."
     funcionario_ids = Funcionario.pluck(:id)
       produtos = []
-      1000000.times do |j|
+      1000.times do |j|
         produtos <<      Venda.new(
           horario_venda: Time.now - (1..1000).to_a.sample.days,
           total: (1..100000).to_a.sample / 100.0,

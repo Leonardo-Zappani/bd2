@@ -3,7 +3,7 @@
   <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.descricao}%>
   <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) { format_amount_as_money(produto.valor)}%>
   <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.quantidade.to_s}%>
-  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {produto.fornecedore.name}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {Fornecedore.find(produto.fornecedores_id).descricao}%>
   <% item.col(options: { class: 'text-gray-900' }) do %>
     <div class="table-component__actions">
       <%= button_to edit_produto_path(produto), method: :get, class: 'hidden group-hover:flex' do %>

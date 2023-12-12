@@ -24,7 +24,7 @@
 
     <div class="form-group col-span-1">
       <%= f.label 'Fornecedor', class: ' text-gray-700 gap-6' %>
-      <%= f.collection_select :fornecedore_id, fornecedores(selected_fornecedore: @produto.fornecedore), :id, :descricao, {}, class: 'form-control-input', autofocus: true %>
+      <%= f.collection_select :fornecedore_id, fornecedores(selected_fornecedore: Fornecedore.all.first), :id, :descricao, {}, class: 'form-control-input', autofocus: true %>
     </div>
 
 
