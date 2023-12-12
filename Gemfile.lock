@@ -248,7 +248,7 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     sexp_processor (4.17.0)
-    sidekiq (6.3.1)
+    sidekiq (6.4.2)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
@@ -322,7 +322,7 @@ DEPENDENCIES
   redis
   rubocop (~> 1.58)
   selenium-webdriver
-  sidekiq (~> 6.3.1)
+  sidekiq (~> 6.4.2)
   simple_enum!
   sprockets-rails
   stimulus-rails

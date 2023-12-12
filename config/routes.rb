@@ -1,5 +1,9 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :funcionarios
+
+  mount Sidekiq::Web => "/sidekiq"
 
   root 'indicators#index'
   resources :itens
