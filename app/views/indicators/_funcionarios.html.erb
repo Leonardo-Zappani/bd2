@@ -1,18 +1,20 @@
-<div class=" w-fu">
-  <div class=" h-full grid grid-cols-3 w-full justify-end my-3 items-end gap-6">
-    <div class="flex justify-start items-center gap-1.5">
-      <%= heroicon 'list-bullet', options: { class: 'stroke-gray-500 relative w-6 h-6' } %>
-      <div class="grow shrink basis-0 text-black text-xl font-bold leading-7">Últimos Funcionários</div>
+<div class=" w-full">
+  <div class="flex h-full my-3 items-end gap-6">
+
+    <div class="flex justify-center items-center gap-1.5">
+      <%= heroicon 'list-bullet', options: { class: 'flex stroke-gray-500 relative w-6 h-6' } %>
+      <div class="flex grow shrink basis-0 text-black text-xl font-bold leading-7">Últimos Funcionários</div>
     </div>
-    <%= link_to new_funcionario_path do %>
-      <div class="justify-start items-center gap-1.5 flex text-green-600 hover:text-green-700">
+
+    <%= link_to new_funcionario_path, class: 'flex justify-end' do %>
+      <div class="flex justify-end items-center text-green-600 hover:text-green-700">
         <%= heroicon 'plus', variant: 'mini', options: { class: 'relative w-5 h-5' } %>
         <div class="text-sm font-bold leading-tight">Cadastrar</div>
       </div>
     <% end %>
   </div>
 
-  <div class="self-stretch justify-start items-start gap-6">
+  <div class="justify-start items-start gap-6">
     <% @recent_funcionarios.each do |funcionario| %>
       <div class="grow shrink basis-0 h-[68px] p-4 bg-white rounded-md shadow justify-end items-center gap-2.5 flex">
         <div class="grow shrink basis-0 h-9 justify-start items-center gap-3 flex">

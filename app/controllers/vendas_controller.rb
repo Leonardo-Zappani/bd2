@@ -59,13 +59,13 @@ class VendasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_venda
-      @venda = Venda.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_venda
+    @venda = Venda.find(params[:id])
+  end
 
-    # Only allow a list of trusted parameters through.
-    def venda_params
-      params.fetch(:venda, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def venda_params
+    params.require(:venda).permit(:iten_id, :funcionario_id, :horario_venda)
+  end
 end

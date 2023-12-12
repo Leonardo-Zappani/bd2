@@ -1,0 +1,14 @@
+<%= render(Panels::CardComponent.new) do %>
+  <%= render(Table::TableComponent.new) do |table| %>
+    <% table.header do |header| %>
+      <% header.col {'ID'} %>
+      <% header.col {'Funcionário'} %>
+      <% header.col {'Item'} %>
+      <% header.col {'Horário'} %>
+      <% header.col {'Valor'} %>
+    <% end %>
+    <% table.body(id: :vendas) do %>
+      <%= render collection: @vendas, partial: 'vendas/index/venda', as: :venda %>
+    <% end %>
+  <% end %>
+<% end %>
