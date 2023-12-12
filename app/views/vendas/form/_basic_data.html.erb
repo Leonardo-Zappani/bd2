@@ -16,5 +16,10 @@
         <%= f.text_field :horario_venda, class: 'form-control-input', value: @venda.persisted? ? @venda.created_at : Time.now, disabled: true %>
       </div>
 
+      <div class="form-group w-full">
+        <%= f.label 'total', class: ' text-gray-700' %>
+        <%= f.text_field :total, class: 'form-control-input'%>
+      </div>
+
   </div>
 </div>

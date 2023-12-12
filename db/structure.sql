@@ -9,6 +9,40 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: fn_before_insert_vendas(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.fn_before_insert_vendas() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    -- Adiciona validação para o campo ven_valor_total
+    IF NEW.total <= 0 THEN
+        RAISE EXCEPTION 'O valor total da venda não pode ser menor ou igual a 0';
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: fn_produto_rollback(); Type: FUNCTION; Schema: public; Owner: -
+--
+
+CREATE FUNCTION public.fn_produto_rollback() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF NEW.valor <= 0 THEN
+        RAISE EXCEPTION 'O valor do produto não pode ser menor ou igual 0';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -65,14 +99,15 @@ CREATE TABLE public.funcionarios (
     nome character varying,
     cpf character varying,
     senha character varying,
-    funcao_cd character varying,
+    funcao character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
     reset_password_sent_at timestamp(6) without time zone,
-    remember_created_at timestamp(6) without time zone
+    remember_created_at timestamp(6) without time zone,
+    funcao_cd character varying
 );
 
 
@@ -346,6 +381,20 @@ CREATE INDEX index_vendas_on_funcionarios_id ON public.vendas USING btree (funci
 --
 
 CREATE INDEX index_vendas_on_integer_id ON public.vendas USING btree (integer_id);
+
+
+--
+-- Name: produtos tr_produto_rollback; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER tr_produto_rollback BEFORE INSERT ON public.produtos FOR EACH ROW EXECUTE FUNCTION public.fn_produto_rollback();
+
+
+--
+-- Name: vendas trg_before_insert_vendas; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER trg_before_insert_vendas BEFORE INSERT ON public.vendas FOR EACH ROW EXECUTE FUNCTION public.fn_before_insert_vendas();
 
 
 --

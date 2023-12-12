@@ -1,9 +1,9 @@
 <%= render(Table::ItemComponent.new(options: { id: dom_id(venda), href: edit_venda_url(venda) })) do |item| %>
   <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {venda.id.to_s}%>
-  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {}%>
-  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) { }%>
-  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {Funcionario.find(venda.funcionarios_id).nome}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {Produto.find_by(id: venda.produto_id.first)&.descricao}%>
   <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {venda.horario_venda.to_s}%>
+  <% item.col(options: { class: 'text-gray-900 whitespace-normal break-words' }) {venda.total.to_s}%>
   <% item.col(options: { class: 'text-gray-900' }) do %>
     <div class="table-component__actions">
       <%= button_to edit_venda_path(venda), method: :get, class: 'hidden group-hover:flex' do %>

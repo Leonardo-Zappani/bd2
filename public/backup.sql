@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.9 (Homebrew)
--- Dumped by pg_dump version 14.9 (Homebrew)
+-- Dumped from database version 15.5 (Homebrew)
+-- Dumped by pg_dump version 15.5 (Homebrew)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -15,6 +15,44 @@ SET check_function_bodies = false;
 SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
+
+--
+-- Name: fn_before_insert_vendas(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.fn_before_insert_vendas() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    -- Adiciona validação para o campo ven_valor_total
+    IF NEW.total <= 0 THEN
+        RAISE EXCEPTION 'O valor total da venda não pode ser menor ou igual a 0';
+    END IF;
+
+    RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION public.fn_before_insert_vendas() OWNER TO postgres;
+
+--
+-- Name: fn_produto_rollback(); Type: FUNCTION; Schema: public; Owner: postgres
+--
+
+CREATE FUNCTION public.fn_produto_rollback() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF NEW.valor <= 0 THEN
+        RAISE EXCEPTION 'O valor do produto não pode ser menor ou igual 0';
+    END IF;
+    RETURN NEW;
+END;
+$$;
+
+
+ALTER FUNCTION public.fn_produto_rollback() OWNER TO postgres;
 
 SET default_tablespace = '';
 
@@ -78,14 +116,15 @@ CREATE TABLE public.funcionarios (
     nome character varying,
     cpf character varying,
     senha character varying,
-    funcao_cd character varying,
+    funcao character varying,
     created_at timestamp(6) without time zone NOT NULL,
     updated_at timestamp(6) without time zone NOT NULL,
     email character varying DEFAULT ''::character varying NOT NULL,
     encrypted_password character varying DEFAULT ''::character varying NOT NULL,
     reset_password_token character varying,
     reset_password_sent_at timestamp(6) without time zone,
-    remember_created_at timestamp(6) without time zone
+    remember_created_at timestamp(6) without time zone,
+    funcao_cd character varying
 );
 
 
@@ -211,7 +250,8 @@ CREATE TABLE public.vendas (
     funcionarios_id bigint,
     integer_id bigint,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    produto_id integer[] DEFAULT '{}'::integer[]
 );
 
 
@@ -278,7 +318,7 @@ ALTER TABLE ONLY public.vendas ALTER COLUMN id SET DEFAULT nextval('public.venda
 --
 
 COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
-environment	development	2023-12-12 16:14:15.696707	2023-12-12 16:14:15.696707
+environment	development	2023-12-08 00:51:38.465986	2023-12-08 00:51:38.465986
 \.
 
 
@@ -287,6 +327,7 @@ environment	development	2023-12-12 16:14:15.696707	2023-12-12 16:14:15.696707
 --
 
 COPY public.fornecedores (id, descricao, created_at, updated_at) FROM stdin;
+6	Teste fornecedor	2023-12-12 18:41:44.094534	2023-12-12 18:41:44.094534
 \.
 
 
@@ -294,8 +335,9 @@ COPY public.fornecedores (id, descricao, created_at, updated_at) FROM stdin;
 -- Data for Name: funcionarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.funcionarios (id, nome, cpf, senha, funcao_cd, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at) FROM stdin;
-1	Hector	\N	\N	\N	2023-12-12 16:14:57.005663	2023-12-12 16:14:57.005663	hectorguarconi@hotmail.com	$2a$12$NP/NBjK1qkntZfZkrBA.9esJpiJAm1I03SKriTnGBlw9qPk5wGLaa	\N	\N	\N
+COPY public.funcionarios (id, nome, cpf, senha, funcao, created_at, updated_at, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, funcao_cd) FROM stdin;
+4	Leonardo Zappani	1234567890	\N	\N	2023-12-12 18:36:38.760868	2023-12-12 18:40:16.95768	leo@gmail.com	$2a$12$9INPSAIaD4W.HzE3zM754u3R5wL4H2K49BSwGUAyxf6trC8RiQyAe	\N	\N	\N	0
+6	Cleyton	1234567890	\N	\N	2023-12-12 18:41:22.127222	2023-12-12 18:41:22.127222	cleyton@gmail.com	$2a$12$NGMOKSwW0Mn49lY2adbJL.ihd3c0/7YLpy44R9MgyJVmBDBKJpIB2	\N	\N	\N	1
 \.
 
 
@@ -312,6 +354,7 @@ COPY public.itens (id, quantidade, valor_parcial, produtos_id, vendas_id, create
 --
 
 COPY public.produtos (id, descricao, valor, quantidade, fornecedores_id, created_at, updated_at, produto_id) FROM stdin;
+10	Tapete	10.00	1	6	2023-12-12 18:42:02.602604	2023-12-12 18:42:02.602604	{}
 \.
 
 
@@ -327,6 +370,7 @@ COPY public.schema_migrations (version) FROM stdin;
 20231128211405
 20231208005122
 20231212011036
+20231212175550
 \.
 
 
@@ -334,7 +378,8 @@ COPY public.schema_migrations (version) FROM stdin;
 -- Data for Name: vendas; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.vendas (id, horario_venda, total, funcionarios_id, integer_id, created_at, updated_at) FROM stdin;
+COPY public.vendas (id, horario_venda, total, funcionarios_id, integer_id, created_at, updated_at, produto_id) FROM stdin;
+14	2023-12-12 18:42:10.992412	900.00	6	\N	2023-12-12 18:42:10.99263	2023-12-12 18:42:10.99263	{10}
 \.
 
 
@@ -342,14 +387,14 @@ COPY public.vendas (id, horario_venda, total, funcionarios_id, integer_id, creat
 -- Name: fornecedores_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.fornecedores_id_seq', 1, false);
+SELECT pg_catalog.setval('public.fornecedores_id_seq', 6, true);
 
 
 --
 -- Name: funcionarios_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.funcionarios_id_seq', 1, true);
+SELECT pg_catalog.setval('public.funcionarios_id_seq', 6, true);
 
 
 --
@@ -363,14 +408,14 @@ SELECT pg_catalog.setval('public.itens_id_seq', 1, false);
 -- Name: produtos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.produtos_id_seq', 1, false);
+SELECT pg_catalog.setval('public.produtos_id_seq', 11, true);
 
 
 --
 -- Name: vendas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.vendas_id_seq', 1, false);
+SELECT pg_catalog.setval('public.vendas_id_seq', 14, true);
 
 
 --
@@ -476,6 +521,20 @@ CREATE INDEX index_vendas_on_funcionarios_id ON public.vendas USING btree (funci
 --
 
 CREATE INDEX index_vendas_on_integer_id ON public.vendas USING btree (integer_id);
+
+
+--
+-- Name: produtos tr_produto_rollback; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER tr_produto_rollback BEFORE INSERT ON public.produtos FOR EACH ROW EXECUTE FUNCTION public.fn_produto_rollback();
+
+
+--
+-- Name: vendas trg_before_insert_vendas; Type: TRIGGER; Schema: public; Owner: postgres
+--
+
+CREATE TRIGGER trg_before_insert_vendas BEFORE INSERT ON public.vendas FOR EACH ROW EXECUTE FUNCTION public.fn_before_insert_vendas();
 
 
 --
